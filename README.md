@@ -17,3 +17,23 @@ ng serve
 
 Setelah server berjalan, open browser dan navigasi ke `http://localhost:4200/`. 
 
+## Screenshots
+
+![Sukses validasi](pics/validasi.png)
+
+### Postman
+
+![Postman](pics/validasi.png)
+
+### Halaman tampilan list kosong
+
+![List kosong](pics/empty.png)
+
+### Halaman tampilan berisi 6 notes
+
+![Tampilan berisi 6 notes (page 1)](pics/six_1.png)
+
+![Tampilan berisi 6 notes (page 2)](pics/six_2.png)
+
+![Tampilan berisi 6 notes](pics/six.png)
+
