@@ -15,6 +15,10 @@ export class NotesService {
     return this.http.get<Note[]>(`${this.baseUrl}`);
   }
 
+  getNotesById(id: number): Observable<Note> {
+    return this.http.get<Note>(`${this.baseUrl}/${id}`); 
+  }
+
   createNote(note: Note): Observable<Note> {
     return this.http.post<Note>(`${this.baseUrl}`, note);
   }
