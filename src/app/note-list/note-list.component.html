@@ -37,4 +37,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+<div *ngIf="dataSource.data.length === 0" class="text-center mt-3">
+  <mat-icon>info</mat-icon> Maaf, Tidak ada data.
+</div>
+
+
+<mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

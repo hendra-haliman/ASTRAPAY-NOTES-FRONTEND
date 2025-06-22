@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { Note } from '../note';
 import { NotesService } from '../notes.service';
@@ -10,19 +12,22 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-note-list',
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, HttpClientModule, MatIcon],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, HttpClientModule, MatIcon, NgIf],
   templateUrl: './note-list.component.html',
   styleUrl: './note-list.component.css'
 })
 export class NoteListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'content', 'createdAt', 'actions'];
-  dataSource: Note[] = [];
+  dataSource = new MatTableDataSource<Note>();
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private notesService: NotesService, private router: Router) {}
 
   ngOnInit(): void {
     this.notesService.getNotes().subscribe(notes=> {
-      this.dataSource = notes;
+      this.dataSource.data = notes;
+      this.dataSource.paginator = this.paginator;
     })
   }
 
@@ -33,7 +38,7 @@ export class NoteListComponent implements OnInit {
 
   onDelete(note: Note): void {
     this.notesService.deleteNote(note.id).subscribe(() => {
-      this.dataSource = this.dataSource.filter(n => n.id !== note.id);
+      this.dataSource.data = this.dataSource.data.filter(n => n.id !== note.id);
       console.log('Deleted Note:', note);
     }, error => {
       console.error('Error deleting note:', error);
