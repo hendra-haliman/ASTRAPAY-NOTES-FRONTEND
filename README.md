@@ -25,7 +25,21 @@ Setelah server berjalan, open browser dan navigasi ke `http://localhost:4200/`.
 
 ### Postman screenshots
 
+#### List Notes
 ![List Notes](pics/list_notes.png)
+
+#### List Note by id
+![List Notes](pics/get_note_by_id.png)
+
+#### Create Note
+![Create note](pics/create_note.png)
+
+#### Update Note
+![Update note](pics/update_note.png)
+
+#### Delete Note
+![Delete note](pics/delete_note.png)
+
 
 ### Halaman tampilan list kosong
 
