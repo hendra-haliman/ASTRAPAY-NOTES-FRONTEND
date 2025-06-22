@@ -25,7 +25,7 @@ Setelah server berjalan, open browser dan navigasi ke `http://localhost:4200/`.
 
 ### Postman screenshots
 
-![Postman](pics/validasi.png)
+![List Notes](pics/list_notes.png)
 
 ### Halaman tampilan list kosong
 
